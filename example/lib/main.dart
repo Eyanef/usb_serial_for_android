@@ -53,7 +53,7 @@ class _MyAppState extends State<MyApp> {
       return true;
     }
 
-    _port = await device.create(UsbSerial.CP21xx);
+    _port = await device.create(UsbSerial.CP21xx, 4);
     if (await (_port!.open()) != true) {
       setState(() {
         _status = "Failed to open port";

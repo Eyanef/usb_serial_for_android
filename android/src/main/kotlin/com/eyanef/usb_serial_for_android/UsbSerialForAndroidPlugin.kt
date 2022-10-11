@@ -102,9 +102,10 @@ class UsbSerialForAndroidPlugin : FlutterPlugin, MethodCallHandler, EventChannel
         device: UsbDevice,
         result: Result,
         allowAcquirePermission: Boolean,
-        portNum: Int,
+        _portNum: Int?,
         type: String? = null
     ) {
+        var portNum = _portNum
         val cb: AcquirePermissionCallback = object : AcquirePermissionCallback {
             override fun onSuccess(device: UsbDevice) {
                 openDevice(device, result, false, portNum)
@@ -143,7 +144,11 @@ class UsbSerialForAndroidPlugin : FlutterPlugin, MethodCallHandler, EventChannel
                 result.error(TAG, "connection failed, no driver for device", null)
             }
 
-            val usbSerialPort: UsbSerialPort? = usbSerialDriver?.ports?.get(portNum)
+            if(portNum == null && (usbSerialDriver?.ports?.size ?: 0) >= 1) {
+                portNum = 0
+            }
+
+            val usbSerialPort: UsbSerialPort? = usbSerialDriver?.ports?.get(portNum!!)
             val usbConnection = _usbManager?.openDevice(usbSerialDriver?.device)
 
 
@@ -235,7 +240,7 @@ class UsbSerialForAndroidPlugin : FlutterPlugin, MethodCallHandler, EventChannel
         pid: Int,
         deviceId: Int,
         result: Result,
-        portNum: Int
+        portNum: Int?
     ) {
         val devices: Map<String, UsbDevice> = _usbManager?.deviceList!!
 
@@ -268,7 +273,7 @@ class UsbSerialForAndroidPlugin : FlutterPlugin, MethodCallHandler, EventChannel
                     call.argument<Int>("pid")!!,
                     call.argument<Int>("deviceId")!!,
                     result,
-                    4,
+                    call.argument<Int?>("portNum"),
                 )
             }
             else -> result.notImplemented()

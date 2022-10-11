@@ -26,7 +26,7 @@ class UsbSerial {
   static Stream<UsbEvent>? _eventStream;
 
   static Future<UsbPort?> createFromDeviceId(int? deviceId,
-      [String? type, int portNum = 0]) async {
+      [String? type, int? portNum]) async {
     String? methodChannelName = await _channel.invokeMethod("create", {
       "type": type,
       "vid": -1,

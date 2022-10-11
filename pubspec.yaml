@@ -1,5 +1,5 @@
 name: usb_serial_for_android
-description: A new Flutter plugin project.
+description: Serial port library for flutter, available only for android devices.
 version: 0.0.1
 homepage: https://github.com/Eyanef/usb_serial_for_android
 
@@ -8,6 +8,7 @@ environment:
   flutter: ">=2.5.0"
 
 dependencies:
+  async: ^2.9.0
   collection: ^1.16.0
   flutter:
     sdk: flutter

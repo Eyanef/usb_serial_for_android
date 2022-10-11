@@ -52,8 +52,8 @@ class UsbDevice {
   /// [type] can be any of the [UsbSerial.CDC], [UsbSerial.CH34x], [UsbSerial.CP210x], [UsbSerial.FTDI] or [USBSerial.PL2303] values or empty for auto detection.
   /// returns the new UsbPort or throws an error on open failure.
 
-  Future<UsbPort?> create([String? type]) async {
-    _port = await UsbSerial.createFromDeviceId(deviceId, type);
+  Future<UsbPort?> create([String? type, int? portNum]) async {
+    _port = await UsbSerial.createFromDeviceId(deviceId, type, portNum);
     return _port;
   }
 

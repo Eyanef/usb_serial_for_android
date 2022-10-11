@@ -1,15 +1,14 @@
 # usb_serial_for_android
 
-A new Flutter plugin project.
+Serial lib for android devices.
 
-## Getting Started
+## IMPORTANT!
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+This project is very similar to [usb_serial](https://github.com/altera2015/usbserial), you can use its documentation to use this library. There are still many changes and tests that I must perform
 
-For help getting started with Flutter development, view the
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Motivation
 
+I had some problems and bugs using usb_serial due to the special requirements of a project I was working on.
+
+While usb_serial uses https://github.com/felHR85/UsbSerial
+To support its functionality, this library uses https://github.com/mik3y/usb-serial-for-android
