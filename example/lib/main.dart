@@ -53,6 +53,8 @@ class _MyAppState extends State<MyApp> {
       return true;
     }
 
+    //_port = await device.create();
+    // You can customize your driver and the port number
     _port = await device.create(UsbSerial.CP21xx, 4);
     if (await (_port!.open()) != true) {
       setState(() {
