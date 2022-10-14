@@ -108,7 +108,7 @@ class UsbSerialForAndroidPlugin : FlutterPlugin, MethodCallHandler, EventChannel
         var portNum = _portNum
         val cb: AcquirePermissionCallback = object : AcquirePermissionCallback {
             override fun onSuccess(device: UsbDevice) {
-                openDevice(device, result, false, portNum)
+                openDevice(device, result, false, portNum, type)
             }
 
             override fun onFailed(device: UsbDevice) {
