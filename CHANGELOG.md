@@ -9,3 +9,7 @@
 ## 0.0.3
 
 - Fix control exceptions
+
+## 0.0.4
+
+- Fix more control exceptions
