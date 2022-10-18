@@ -13,3 +13,7 @@
 ## 0.0.4
 
 - Fix more control exceptions
+
+## 0.0.5
+
+- Fix onError exception.

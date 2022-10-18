@@ -69,19 +69,24 @@ class UsbSerialListener(
     }
 
     private fun _disconnect() {
-        _ioManager?.let {
-            it.listener = null
-            it.stop()
-            _ioManager = null
-        }
-        _usbSerialPort?.let {
-            it.dtr = false
-            it.rts = false
-            it.close()
-        }
-        _usbConnection?.let {
-            it.close()
-            _usbConnection = null
+        try {
+
+            _ioManager?.let {
+//                it.listener = null
+                it.stop()
+                _ioManager = null
+            }
+            _usbSerialPort?.let {
+                it.dtr = false
+                it.rts = false
+                it.close()
+            }
+            _usbConnection?.let {
+                it.close()
+                _usbConnection = null
+            }
+        } catch (e: Exception) {
+            Log.d(TAG, "Exception ignored")
         }
 
     }
@@ -108,6 +113,7 @@ class UsbSerialListener(
 
         override fun onRunError(e: Exception?) {
             Log.e(TAG, "onRunError")
+            _disconnect()
         }
     }
 
